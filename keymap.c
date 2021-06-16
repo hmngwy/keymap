@@ -52,18 +52,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // LT_HOM
   [_SYM] = LAYOUT_3x5(
-    KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,  KC_CAPS,    KC_LPRN,  KC_RPRN,  KC_EQL,  KC_LT,   KC_GT,
+    KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,  KC_PERC,    KC_LPRN,  KC_RPRN,  KC_EQL,  KC_LT,   KC_GT,
     KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,    KC_LCBR,  KC_RCBR,  KC_COLN, KC_LBRC, KC_RBRC,
-    KC_PERC, ___,     ___,     KC_SCLN, KC_PIPE,    KC_UNDS,  KC_PAST,  KC_PMNS, KC_PPLS, ___,
+    ___,     ___,     ___,     KC_SCLN, KC_PIPE,    KC_UNDS,  KC_PAST,  KC_PMNS, KC_PPLS, ___,
                       _v_,     _v_,     _v_,        _v_,      _v_,      _v_
   ),
 
   // RT_HOM
   [_NAV] = LAYOUT_3x5(
-    KC_PPLS, KC_7,    KC_8,     KC_9,     KC_0,       KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
-    KC_PMNS, KC_4,    KC_5,     KC_6,     KC_DOT,     KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
-    KC_PERC, KC_1,    KC_2,     KC_3,     KC_COMM,    KC_CUT,   KC_COPY,  KC_PASTE, KC_FIND, KC_UNDO,
-                      DF(_NAV), _v_,      _v_,        _v_,      _v_,      DF(0)
+    KC_PPLS, KC_7,    KC_8,     KC_9,     KC_PERC,       KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
+    KC_PMNS, KC_4,    KC_5,     KC_6,     KC_DOT,        KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
+    KC_PAST, KC_1,    KC_2,     KC_3,     KC_COMM,       ___,      ___,      ___,      ___,     ___,
+                      DF(_NAV), KC_0,     _v_,          _v_,      _v_,      DF(0)
   ),
 
   // RT_INN
