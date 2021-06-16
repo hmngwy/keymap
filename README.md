@@ -4,3 +4,9 @@
 make c keyboard_id=crkbd/rev1/common
 make c keyboard_id=planck/rev6
 ```
+
+### About
+
+Heavily based on [manna-harbour/miryoku](https://github.com/rstacruz/my_qmk_keymaps) and [rstacruz/my_qmk_keymaps](https://github.com/rstacruz/my_qmk_keymaps).
+
+Homerow mods implementation based off of [A guide to home row mods](https://precondition.github.io/home-row-mods).
