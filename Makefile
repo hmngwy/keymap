@@ -2,9 +2,10 @@
 # qmk_home := ${HOME}/qmk_firmware
 qmk_home := $(shell qmk config user.qmk_home | cut -d= -f2)
 
+# Set `keyboard_id` to select keyboard base
+#keyboard_id   := crkbd/rev1/common
 keymap_name   := mailmanpat
-keyboard_path := crkbd
-keyboard_id   := crkbd/rev1/common
+keyboard_path := $(shell echo ${keyboard_id} | cut -d "/" -f1)
 
 # Set `use_docker=1` to use Docker for building
 ifeq (${use_docker},1)
@@ -12,6 +13,9 @@ ifeq (${use_docker},1)
 else
 	make := make
 endif
+
+debug:
+	@echo ${keyboard_path}:${keyboard_id}:${keymap_name}
 
 help:
 	@echo "Try 'make c' (compile) or 'make f' (flash)"
