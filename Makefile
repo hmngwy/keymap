@@ -1,11 +1,12 @@
 # Get qmk path using the qmk cli
 # qmk_home := ${HOME}/qmk_firmware
 qmk_home := $(shell qmk config user.qmk_home | cut -d= -f2)
+qmk_user := $(shell qmk config user.name | cut -d= -f2)
 
-# Set `keyboard_id` to select keyboard base
-#keyboard_id   := crkbd/rev1/common
-keymap_name   := mailmanpat
-keyboard_path := $(shell echo ${keyboard_id} | cut -d "/" -f1)
+# Set `keyboard` to select keyboard base
+#keyboard   := crkbd/rev1/common
+keymap_name   := $(shell echo ${qmk_user}-mailman)
+keyboard_path := $(shell echo ${keyboard} | cut -d "/" -f1)
 
 # Set `use_docker=1` to use Docker for building
 ifeq (${use_docker},1)
@@ -15,7 +16,7 @@ else
 endif
 
 debug:
-	@echo ${keyboard_path}:${keyboard_id}:${keymap_name}
+	@echo ${keyboard_path}:${keyboard}:${keymap_name}
 
 help:
 	@echo "Try 'make c' (compile) or 'make f' (flash)"
@@ -24,10 +25,10 @@ ref:
 	@grep -E '[│─┄]' keymap.c | less
 
 compile: push
-	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}
+	cd ${qmk_home} && ${make} ${keyboard}:${keymap_name}
 
 flash: push
-	cd ${qmk_home} && ${make} ${keyboard_id}:${keymap_name}:flash
+	cd ${qmk_home} && ${make} ${keyboard}:${keymap_name}:flash
 
 ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ./%
 	cp $< $@
