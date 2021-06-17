@@ -162,7 +162,7 @@ void oled_render_layer_state(void) {
             oled_write_ln_P(PSTR("Locked"), false);
             break;
 	default:
-            oled_write_ln_P(PSTR(layer_state), false);
+            oled_write_ln_P(PSTR("?"), false);
             break;
     }
 }
