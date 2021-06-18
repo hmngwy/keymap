@@ -17,7 +17,7 @@ make flash keyboard=...
 3. Symbols layer are arranged using the Colemak DH heatmap (guesstimated)
 5. Numpad layer layout optimized for doing maths
 6. Navigation layer combined with Numpad layer for vim motion
-7. Mouse navigation layer
+7. Combined Mouse navigation and Function layer
 8. Tap Dance keys for Capslock, Double Quotes and Backslash
 
 #### Extras
