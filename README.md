@@ -12,13 +12,13 @@ make flash keyboard=...
 
 #### Features
 
-1. Colemak DH(m) Base Layer
-2. Home Row Mods on both hands in navigation layers
+1. Colemak DH(m) Base layer
+2. Home Row Mods on both hands in the Base layer, left hand in Navigation layers
 3. Symbols layer are arranged using the Colemak DH heatmap (guesstimated)
+4. Combined Navigation cluster and Numpad layer for Vim motions
 5. Numpad layer layout optimized for doing maths
-6. Navigation layer combined with Numpad layer for vim motion
-7. Combined Mouse navigation and Function layer
-8. Tap Dance keys for Capslock, Double Quotes and Backslash
+6. Combined Mouse navigation and Function layer
+7. Tap Dance keys for Capslock, Double Quotes and Backslash
 
 #### Extras
 
