@@ -4,17 +4,10 @@
 #define _v_  KC_TRNS
 #define ___  KC_NO
 
-// Left-hand home row mods
-#define HR_A LGUI_T(KC_A)
-#define HR_R LALT_T(KC_R)
-#define HR_S LCTL_T(KC_S)
-#define HR_T LSFT_T(KC_T)
-
-// Right-hand home row mods
-#define HR_N RSFT_T(KC_N)
-#define HR_E RCTL_T(KC_E)
-#define HR_I LALT_T(KC_I)
-#define HR_O RGUI_T(KC_O)
+#define HR_1 LGUI_T
+#define HR_2 LALT_T
+#define HR_3 LCTL_T
+#define HR_4 LSFT_T
 
 /* Thumb Row */
 #define LT_OUT KC_ESC
@@ -44,34 +37,34 @@ enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _LOC };
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = LAYOUT_3x5(
-    TD(TD_Q), KC_W, KC_F,   KC_P,   KC_B,      KC_J,   KC_L,   KC_U,    KC_Y,   TD(TD_QUOT),
-    HR_A,     HR_R, HR_S,   HR_T,   KC_G,      KC_M,   HR_N,   HR_E,    HR_I,   HR_O,
-    KC_Z,     KC_X, KC_C,   KC_D,   KC_V,      KC_K,   KC_H,   KC_COMM, KC_DOT, TD(TD_SLASH),
-                    LT_OUT, LT_HOM, LT_INN,    RT_INN, RT_HOM, RT_OUT
+    TD(TD_Q),   KC_W,       KC_F,       KC_P,       KC_B,          KC_J,   KC_L,       KC_U,       KC_Y,       TD(TD_QUOT),
+    HR_1(KC_A), HR_2(KC_R), HR_3(KC_S), HR_4(KC_T), KC_G,          KC_M,   HR_4(KC_N), HR_3(KC_E), HR_2(KC_I), HR_1(KC_O),
+    KC_Z,       KC_X,       KC_C,       KC_D,       KC_V,          KC_K,   KC_H,       KC_COMM,    KC_DOT,     TD(TD_SLASH),
+                            LT_OUT,     LT_HOM,     LT_INN,        RT_INN, RT_HOM,     RT_OUT
   ),
 
   // LT_HOM
   [_SYM] = LAYOUT_3x5(
-    KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,  ___,        ___,     KC_LT,    KC_GT,   KC_LBRC, KC_RBRC,
-    KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,    KC_EQL,  KC_LPRN,  KC_RPRN, KC_LCBR, KC_RCBR,
-    ___,     KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,    KC_UNDS, KC_COLN,  KC_PMNS, KC_PPLS, ___,
-                      _v_,     _v_,     _v_,        _v_,      _v_,      _v_
+    KC_CIRC,     KC_GRV,        KC_TILD,       KC_DLR,        ___,              ___,     KC_LT,         KC_GT,         KC_LBRC,       KC_RBRC,
+    HR_1(KC_AT), HR_2(KC_HASH), HR_3(KC_EXLM), HR_4(KC_QUES), KC_AMPR,          KC_EQL,  HR_4(KC_LPRN), HR_3(KC_RPRN), HR_2(KC_LCBR), HR_1(KC_RCBR),
+    ___,         KC_PAST,       KC_PERC,       KC_SCLN,       KC_PIPE,          KC_UNDS, KC_COLN,       KC_PMNS,       KC_PPLS,       ___,
+                                _v_,           _v_,           _v_,              _v_,     _v_,           _v_
   ),
 
   // RT_HOM
   [_NAV] = LAYOUT_3x5(
-    KC_PPLS, KC_7,    KC_8,     KC_9,     KC_PERC,      KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
-    KC_PMNS, KC_4,    KC_5,     KC_6,     KC_DOT,       KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
-    KC_PAST, KC_1,    KC_2,     KC_3,     KC_COMM,      ___,      ___,      ___,      ___,     ___,
-                      DF(_NAV), KC_0,     _v_,          _v_,      _v_,      DF(0)
+    KC_PPLS,       KC_7,       KC_8,       KC_9,       KC_PERC,          KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
+    HR_1(KC_PMNS), HR_2(KC_4), HR_3(KC_5), HR_4(KC_6), KC_DOT,           KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
+    KC_PAST,       KC_1,       KC_2,       KC_3,       KC_COMM,          ___,      ___,      ___,      ___,     ___,
+                               DF(_NAV),   KC_0,       _v_,              _v_,      _v_,      DF(0)
   ),
 
   // RT_INN
   [_FUN] = LAYOUT_3x5(
-    KC_BRIU, KC_BRID, KC_F11,   KC_F12,     ___,           KC_WH_U,  KC_MS_BTN1, KC_MS_U, KC_MS_BTN2, RESET,
-    KC_F1,   KC_F2,   KC_F3,    KC_F4,      KC_F5,         KC_WH_D,  KC_MS_L,    KC_MS_D, KC_MS_R,    ___,
-    KC_F6,   KC_F7,   KC_F8,    KC_F9,      KC_F10,        KC_VOLD,  KC_VOLU,    KC_MPLY, KC_MPRV,    KC_MNXT,
-                      DF(_FUN), KC_MS_BTN1, KC_MS_BTN2,    _v_,      _v_,        DF(0)
+    KC_BRIU,     KC_BRID,     KC_F11,      KC_F12,      ___,           KC_WH_U,  KC_MS_BTN1, KC_MS_U, KC_MS_BTN2, RESET,
+    HR_1(KC_F1), HR_2(KC_F2), HR_3(KC_F3), HR_4(KC_F4), KC_F5,         KC_WH_D,  KC_MS_L,    KC_MS_D, KC_MS_R,    ___,
+    KC_F6,       KC_F7,       KC_F8,       KC_F9,       KC_F10,        KC_VOLD,  KC_VOLU,    KC_MPLY, KC_MPRV,    KC_MNXT,
+                              DF(_FUN),    KC_MS_BTN1,  KC_MS_BTN2,    _v_,      _v_,        DF(0)
   ),
 
   // LT_INN
@@ -100,9 +93,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case HR_A:
-            return TAPPING_TERM + 100;
-        case HR_O:
+        case HR_1(KC_A):
+        case HR_1(KC_O):
+        case HR_1(KC_AT):
+        case HR_1(KC_RCBR):
+        case HR_1(KC_PMNS):
+        case HR_1(KC_F1):
             return TAPPING_TERM + 100;
         default:
             return TAPPING_TERM;
