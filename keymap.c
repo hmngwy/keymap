@@ -45,10 +45,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // LT_HOM
   [_SYM] = LAYOUT_3x5(
-    KC_CIRC,     KC_GRV,        KC_TILD,       KC_DLR,        ___,              ___,     KC_LT,         KC_GT,         KC_LBRC,       KC_RBRC,
-    HR_1(KC_AT), HR_2(KC_HASH), HR_3(KC_EXLM), HR_4(KC_QUES), KC_AMPR,          KC_EQL,  HR_4(KC_LPRN), HR_3(KC_RPRN), HR_2(KC_LCBR), HR_1(KC_RCBR),
-    ___,         KC_PAST,       KC_PERC,       KC_SCLN,       KC_PIPE,          KC_UNDS, KC_COLN,       KC_PMNS,       KC_PPLS,       ___,
-                                _v_,           _v_,           _v_,              _v_,     _v_,           _v_
+    KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,  ___,              ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
+    KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,          KC_EQL,  KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
+    ___,     KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
+                      _v_,     _v_,     _v_,              _v_,     _v_,     _v_
   ),
 
   // RT_HOM

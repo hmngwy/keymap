@@ -10,10 +10,10 @@ make keyboard=planck/rev6
 make flash keyboard=...
 ```
 
-#### Features 
+#### Features
 
 1. Colemak DH(m) Base Layer
-2. Home Row Mods on both hands in the default and Symbol layer, Left hand only in nav layers
+2. Home Row Mods on both hands in navigation layers
 3. Symbols layer are arranged using the Colemak DH heatmap (guesstimated)
 5. Numpad layer layout optimized for doing maths
 6. Navigation layer combined with Numpad layer for vim motion
