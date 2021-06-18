@@ -22,7 +22,8 @@ make flash keyboard=...
 
 #### Extras
 
-Valorant sweat-lord layer
+- Valorant sweat-lord layer
+- OLED, RGB, and Audio support
 
 ### About
 
