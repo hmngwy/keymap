@@ -4,7 +4,7 @@ qmk_home := $(shell qmk config user.qmk_home | cut -d= -f2)
 qmk_user := $(shell qmk config user.name | cut -d= -f2)
 
 # Set `keyboard` to select keyboard base
-#keyboard   := crkbd/rev1/common
+keyboard      := crkbd/rev1/common
 keymap_name   := $(shell echo ${qmk_user}-mailman)
 keyboard_path := $(shell echo ${keyboard} | cut -d "/" -f1)
 
@@ -30,7 +30,7 @@ compile: push
 flash: push
 	cd ${qmk_home} && ${make} ${keyboard}:${keymap_name}:flash
 
-${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ./%
+        ${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/%: ./%
 	cp $< $@
 
 mkdir:
@@ -42,8 +42,11 @@ push: \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/rules.mk \
 	${qmk_home}/keyboards/${keyboard_path}/keymaps/${keymap_name}/keymap.c
 
+
 # Don't delete these intermediate files
 .PRECIOUS: %/keymap.c
+
+.DEFAULT_GOAL := compile
 
 c: compile
 f: flash
