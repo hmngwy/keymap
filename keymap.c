@@ -22,6 +22,8 @@ enum {
     TD_QUOT,
     TD_SLASH,
     TD_Q,
+    APX_3,
+    APX_R,
 };
 
 // Tap Dance definitions
@@ -29,10 +31,12 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_QUOT]  = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO),
     [TD_SLASH] = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_BSLS),
     [TD_Q]     = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_CAPS),
+    [APX_3]    = ACTION_TAP_DANCE_DOUBLE(KC_3, KC_4),
+    [APX_R]    = ACTION_TAP_DANCE_DOUBLE(KC_R, KC_B),
 };
 
 /* Layers */
-enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _LOC };
+enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _APX, _LOC };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -69,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // LT_INN
   [_PAD] = LAYOUT_3x5(
-    ___,      ___, ___, ___, ___,    RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
+    DF(_APX), ___, ___, ___, ___,    RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
     DF(_VAL), ___, ___, ___, ___,    RGB_SAD, RGB_HUD, RGB_VAD, ___, KC_SYSTEM_WAKE,
     DF(_LOC), ___, ___, ___, ___,    RGB_TOG, CK_TOGG, ___,     ___, KC_SYSTEM_SLEEP,
                    _v_, _v_, _v_,    _v_,     _v_,     _v_
@@ -80,6 +84,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_1,    KC_A, KC_S, KC_D,    KC_F,      KC_G,    KC_H,      KC_F3,   KC_F4,   KC_LGUI,
     KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,      KC_B,    KC_N,      KC_F5,   KC_F6,   ___,
                    KC_4, KC_LALT, KC_SPC,    KC_ENT,  KC_SLASH,  DF(0)
+  ),
+
+  [_APX] = LAYOUT_3x5(
+    KC_TAB,  KC_Q, KC_W, TD(APX_3), TD(APX_R),      KC_T,    KC_Y,      KC_F1,   KC_F2,   KC_ESC,
+    KC_1,    KC_A, KC_S, KC_D,      KC_E,           KC_G,    KC_H,      KC_F3,   KC_F4,   KC_LGUI,
+    KC_LSFT, KC_Z, KC_X, KC_C,      KC_V,           KC_B,    KC_N,      KC_F5,   KC_F6,   ___,
+                   KC_G, KC_LCTRL,  KC_SPC,         KC_ENT,  KC_SLASH,  DF(0)
   ),
 
   [_LOC] = LAYOUT_3x5(

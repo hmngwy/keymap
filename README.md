@@ -19,10 +19,11 @@ make flash keyboard=...
 5. Numpad layer layout optimized for doing maths
 6. Combined Mouse navigation and Function layer
 7. Tap Dance keys for Capslock, Double Quotes and Backslash
+8. Nav/Num and Mouse/Fun layer locking
 
 #### Extras
 
-- Valorant sweat-lord layer
+- Valorant and Apex Legends alternate sweat-lord base layer
 - OLED, RGB, and Audio support
 
 ### About
