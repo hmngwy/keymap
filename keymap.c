@@ -21,7 +21,8 @@
 enum {
     TD_QUOT,
     TD_SLASH,
-    TD_Q,
+    TD_C,
+    TD_COMM,
     APX_3,
     APX_R,
 };
@@ -30,7 +31,8 @@ enum {
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_QUOT]  = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO),
     [TD_SLASH] = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_BSLS),
-    [TD_Q]     = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_CAPS),
+    [TD_C]     = ACTION_TAP_DANCE_DOUBLE(KC_C, KC_CAPS),
+    [TD_COMM]  = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_CAPS),
     [APX_3]    = ACTION_TAP_DANCE_DOUBLE(KC_3, KC_4),
     [APX_R]    = ACTION_TAP_DANCE_DOUBLE(KC_R, KC_B),
 };
@@ -41,17 +43,17 @@ enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _APX, _LOC };
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = LAYOUT_3x5(
-    TD(TD_Q),   KC_W,       KC_F,       KC_P,       KC_B,          KC_J,   KC_L,       KC_U,       KC_Y,       TD(TD_QUOT),
+    KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,          KC_J,   KC_L,       KC_U,       KC_Y,       TD(TD_QUOT),
     HR_1(KC_A), HR_2(KC_R), HR_3(KC_S), HR_4(KC_T), KC_G,          KC_M,   HR_4(KC_N), HR_3(KC_E), HR_2(KC_I), HR_1(KC_O),
-    KC_Z,       KC_X,       KC_C,       KC_D,       KC_V,          KC_K,   KC_H,       KC_COMM,    KC_DOT,     TD(TD_SLASH),
+    KC_Z,       KC_X,       TD(TD_C),   KC_D,   KC_V,              KC_K,   KC_H,       TD(TD_COMM),    KC_DOT,     TD(TD_SLASH),
                             LT_OUT,     LT_HOM,     LT_INN,        RT_INN, RT_HOM,     RT_OUT
   ),
 
   // LT_HOM
   [_SYM] = LAYOUT_3x5(
-    KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,  ___,              ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
+    ___,     KC_GRV,  KC_TILD, KC_DLR,  ___,              ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
     KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,          KC_EQL,  KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
-    ___,     KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
+    KC_CIRC, KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
                       _v_,     _v_,     _v_,              _v_,     _v_,     _v_
   ),
 
@@ -130,12 +132,10 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
 #ifdef OLED_DRIVER_ENABLE
 
 #define L_BASE 0
-#define L_SYM 1
-#define L_NAV 2
-#define L_FUN 3
-#define L_PAD 4
-#define L_VAL 5
-#define L_LOC 6
+#define L_SYM 2
+#define L_NAV 4
+#define L_FUN 8
+#define L_PAD 16
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_master()) {
@@ -154,19 +154,13 @@ void oled_render_layer_state(void) {
             oled_write_ln_P(PSTR("Symbol"), false);
             break;
         case L_NAV:
-            oled_write_ln_P(PSTR("Number/Navigate"), false);
+            oled_write_ln_P(PSTR("Num/Nav"), false);
             break;
         case L_FUN:
-            oled_write_ln_P(PSTR("Function/Mouse"), false);
+            oled_write_ln_P(PSTR("Func/Mouse"), false);
             break;
         case L_PAD:
-            oled_write_ln_P(PSTR("Configure"), false);
-            break;
-        case L_VAL:
-            oled_write_ln_P(PSTR("Valorant"), false);
-            break;
-        case L_LOC:
-            oled_write_ln_P(PSTR("Locked"), false);
+            oled_write_ln_P(PSTR("Pad"), false);
             break;
 	default:
             oled_write_ln_P(PSTR("?"), false);
