@@ -21,8 +21,8 @@
 enum {
     TD_QUOT,
     TD_SLASH,
-    TD_C,
-    TD_COMM,
+    TD_V,
+    TD_K,
     APX_3,
     APX_R,
 };
@@ -31,8 +31,8 @@ enum {
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_QUOT]  = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO),
     [TD_SLASH] = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_BSLS),
-    [TD_C]     = ACTION_TAP_DANCE_DOUBLE(KC_C, KC_CAPS),
-    [TD_COMM]  = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_CAPS),
+    [TD_V]     = ACTION_TAP_DANCE_DOUBLE(KC_V, KC_CAPS),
+    [TD_K]     = ACTION_TAP_DANCE_DOUBLE(KC_K, KC_CAPS),
     [APX_3]    = ACTION_TAP_DANCE_DOUBLE(KC_3, KC_4),
     [APX_R]    = ACTION_TAP_DANCE_DOUBLE(KC_R, KC_B),
 };
@@ -45,15 +45,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_3x5(
     KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,          KC_J,   KC_L,       KC_U,       KC_Y,       TD(TD_QUOT),
     HR_1(KC_A), HR_2(KC_R), HR_3(KC_S), HR_4(KC_T), KC_G,          KC_M,   HR_4(KC_N), HR_3(KC_E), HR_2(KC_I), HR_1(KC_O),
-    KC_Z,       KC_X,       TD(TD_C),   KC_D,   KC_V,              KC_K,   KC_H,       TD(TD_COMM),    KC_DOT,     TD(TD_SLASH),
+    KC_Z,       KC_X,       KC_C,       KC_D,       TD(TD_V),      TD(TD_K),   KC_H,       KC_COMM,    KC_DOT,     TD(TD_SLASH),
                             LT_OUT,     LT_HOM,     LT_INN,        RT_INN, RT_HOM,     RT_OUT
   ),
 
   // LT_HOM
   [_SYM] = LAYOUT_3x5(
-    ___,     KC_GRV,  KC_TILD, KC_DLR,  ___,              ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
+    ___,     KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,                ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
     KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,          KC_EQL,  KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
-    KC_CIRC, KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
+    ___,     KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
                       _v_,     _v_,     _v_,              _v_,     _v_,     _v_
   ),
 
