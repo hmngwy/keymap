@@ -16,7 +16,7 @@
 
 #define RT_INN LT(_FUN, KC_ENT)
 #define RT_HOM LT(_NAV, KC_BSPC)
-#define RT_OUT KC_DEL
+#define RT_OUT KC_TILD
 
 enum {
     TD_QUOT,
@@ -29,29 +29,29 @@ enum {
 
 // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_QUOT]  = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO),
-    [TD_SLASH] = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_BSLS),
-    [TD_V]     = ACTION_TAP_DANCE_DOUBLE(KC_V, KC_CAPS),
-    [TD_K]     = ACTION_TAP_DANCE_DOUBLE(KC_K, KC_CAPS),
-    [APX_3]    = ACTION_TAP_DANCE_DOUBLE(KC_3, KC_4),
-    [APX_R]    = ACTION_TAP_DANCE_DOUBLE(KC_R, KC_B),
+    [TD_QUOT]   = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO),
+    [TD_SLASH]  = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_BSLS),
+    [TD_V]      = ACTION_TAP_DANCE_DOUBLE(KC_V, KC_CAPS),
+    [TD_K]      = ACTION_TAP_DANCE_DOUBLE(KC_K, KC_CAPS),
+    [APX_3]     = ACTION_TAP_DANCE_DOUBLE(KC_3, KC_4),
+    [APX_R]     = ACTION_TAP_DANCE_DOUBLE(KC_R, KC_B),
 };
 
 /* Layers */
-enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _APX, _LOC };
+enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _APX, _NW, _LOC };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = LAYOUT_3x5(
-    KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,          KC_J,   KC_L,       KC_U,       KC_Y,       TD(TD_QUOT),
-    HR_1(KC_A), HR_2(KC_R), HR_3(KC_S), HR_4(KC_T), KC_G,          KC_M,   HR_4(KC_N), HR_3(KC_E), HR_2(KC_I), HR_1(KC_O),
-    KC_Z,       KC_X,       KC_C,       KC_D,       TD(TD_V),      TD(TD_K),   KC_H,       KC_COMM,    KC_DOT,     TD(TD_SLASH),
-                            LT_OUT,     LT_HOM,     LT_INN,        RT_INN, RT_HOM,     RT_OUT
+    KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,          KC_J,     KC_L,       KC_U,       KC_Y,       TD(TD_QUOT),
+    HR_1(KC_A), HR_2(KC_R), HR_3(KC_S), HR_4(KC_T), KC_G,          KC_M,     HR_4(KC_N), HR_3(KC_E), HR_2(KC_I), HR_1(KC_O),
+    KC_Z,       KC_X,       KC_C,       KC_D,       TD(TD_V),      TD(TD_K), KC_H,       KC_COMM,    KC_DOT,     TD(TD_SLASH),
+                            LT_OUT,     LT_HOM,     LT_INN,        RT_INN,   RT_HOM,     RT_OUT
   ),
 
-  // LT_HOM
+
   [_SYM] = LAYOUT_3x5(
-    ___,     KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,                ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
+    ___,     KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,           ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
     KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,          KC_EQL,  KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
     ___,     KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
                       _v_,     _v_,     _v_,              _v_,     _v_,     _v_
@@ -59,40 +59,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // RT_HOM
   [_NAV] = LAYOUT_3x5(
-    KC_PPLS,       KC_7,       KC_8,       KC_9,       KC_PERC,          KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
-    HR_1(KC_PMNS), HR_2(KC_4), HR_3(KC_5), HR_4(KC_6), KC_DOT,           KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
-    KC_PAST,       KC_1,       KC_2,       KC_3,       KC_COMM,          ___,      ___,      ___,      ___,     ___,
-                               DF(_NAV),   KC_0,       _v_,              _v_,      _v_,      DF(0)
+    KC_PERC,       KC_7,       KC_8,       KC_9,       KC_0,          KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
+    KC_LPRN,       KC_4,       KC_5,       KC_6,       KC_DOT,        KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
+    KC_RPRN,       KC_1,       KC_2,       KC_3,       KC_COMM,       KC_PAST,  KC_SLASH, KC_PPLS,  KC_PMNS, ___,
+                               DF(_NAV),   _v_,       _v_,            _v_,      _v_,      DF(0)
   ),
 
   // RT_INN
   [_FUN] = LAYOUT_3x5(
-    KC_BRIU,     KC_BRID,     KC_F11,      KC_F12,      ___,           KC_WH_U,  KC_MS_BTN1, KC_MS_U, KC_MS_BTN2, RESET,
-    HR_1(KC_F1), HR_2(KC_F2), HR_3(KC_F3), HR_4(KC_F4), KC_F5,         KC_WH_D,  KC_MS_L,    KC_MS_D, KC_MS_R,    ___,
-    KC_F6,       KC_F7,       KC_F8,       KC_F9,       KC_F10,        KC_VOLD,  KC_VOLU,    KC_MPLY, KC_MPRV,    KC_MNXT,
-                              DF(_FUN),    KC_MS_BTN1,  KC_MS_BTN2,    _v_,      _v_,        DF(0)
+    KC_BRIU,     KC_BRID,     KC_F11,      KC_F12,      ___,            KC_WH_U,   KC_MS_BTN1,  KC_MS_U, KC_MS_BTN2, RESET,
+    HR_1(KC_F1), HR_2(KC_F2), HR_3(KC_F3), HR_4(KC_F4), KC_F5,          KC_WH_D,   KC_MS_L,     KC_MS_D, KC_MS_R,    ___,
+    KC_F6,       KC_F7,       KC_F8,       KC_F9,       KC_F10,         KC_VOLU,   KC_VOLD, KC_MPLY, KC_MPRV,    KC_MNXT,
+                              DF(_FUN),    KC_MS_BTN1,  KC_MS_BTN2,     _v_,       _v_,         DF(0)
   ),
 
   // LT_INN
   [_PAD] = LAYOUT_3x5(
-    DF(_APX), ___, ___, ___, ___,    RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
-    DF(_VAL), ___, ___, ___, ___,    RGB_SAD, RGB_HUD, RGB_VAD, ___, KC_SYSTEM_WAKE,
-    DF(_LOC), ___, ___, ___, ___,    RGB_TOG, CK_TOGG, ___,     ___, KC_SYSTEM_SLEEP,
-                   _v_, _v_, _v_,    _v_,     _v_,     _v_
+    DF(_APX), DF(_NW), ___, ___, ___,    RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
+    DF(_VAL), ___,     ___, ___, ___,    RGB_SAD, RGB_HUD, RGB_VAD, ___, KC_SYSTEM_WAKE,
+    DF(_LOC), ___,     ___, ___, ___,    RGB_TOG, CK_TOGG, ___,     ___, KC_SYSTEM_SLEEP,
+                       _v_, _v_, _v_,    _v_,     _v_,     _v_
   ),
 
   [_VAL] = LAYOUT_3x5(
-    KC_TAB,  KC_Q, KC_W, KC_3,    KC_R,      KC_T,    KC_Y,      KC_F1,   KC_F2,   KC_ESC,
-    KC_1,    KC_A, KC_S, KC_D,    KC_F,      KC_G,    KC_H,      KC_F3,   KC_F4,   KC_LGUI,
-    KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,      KC_B,    KC_N,      KC_F5,   KC_F6,   ___,
+    KC_1,    KC_Q, KC_W, KC_3,    KC_R,      KC_T,    KC_Y,      KC_F1,   KC_F2,   KC_ESC,
+    KC_LSFT, KC_A, KC_S, KC_D,    KC_F,      KC_G,    KC_H,      KC_F3,   KC_F4,   KC_LGUI,
+    KC_TAB,  KC_Z, KC_X, KC_C,    KC_V,      KC_B,    KC_N,      KC_F5,   KC_F6,   ___,
                    KC_4, KC_LALT, KC_SPC,    KC_ENT,  KC_SLASH,  DF(0)
   ),
 
   [_APX] = LAYOUT_3x5(
-    KC_TAB,  KC_Q, KC_W, TD(APX_3), TD(APX_R),      KC_T,    KC_Y,      KC_F1,   KC_F2,   KC_ESC,
-    KC_1,    KC_A, KC_S, KC_D,      KC_E,           KC_G,    KC_H,      KC_F3,   KC_F4,   KC_LGUI,
-    KC_LSFT, KC_Z, KC_X, KC_C,      KC_V,           KC_B,    KC_N,      KC_F5,   KC_F6,   ___,
+    KC_1,    KC_Q, KC_W, TD(APX_3), TD(APX_R),      KC_T,    KC_Y,      KC_F1,   KC_F2,   KC_ESC,
+    KC_LSFT, KC_A, KC_S, KC_D,      KC_E,           KC_G,    KC_H,      KC_F3,   KC_F4,   KC_LGUI,
+    KC_TAB,  KC_Z, KC_X, KC_C,      KC_V,           KC_B,    KC_N,      KC_F5,   KC_F6,   ___,
                    KC_G, KC_LCTRL,  KC_SPC,         KC_ENT,  KC_SLASH,  DF(0)
+  ),
+
+  [_NW] = LAYOUT_3x5(
+    KC_TAB,  KC_Q, KC_W, KC_E,    KC_R,      KC_T,    KC_Y,      KC_1,   KC_2,   KC_ESC,
+    KC_1,    KC_A, KC_S, KC_D,    KC_F,      KC_G,    KC_H,      KC_3,   KC_4,   KC_LGUI,
+    KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,      KC_B,    KC_N,      KC_5,   KC_6,   KC_F4,
+                   KC_4, KC_LALT, KC_SPC,    KC_ENT,  KC_SLASH,  DF(0)
   ),
 
   [_LOC] = LAYOUT_3x5(
@@ -196,37 +203,24 @@ void oled_render_keylog(void) {
     oled_write(keylog_str, false);
 }
 
-void render_bootmagic_status(bool status) {
-    /* Show Ctrl-Gui Swap options */
-    static const char PROGMEM logo[][2][3] = {
-        {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}},
-        {{0x95, 0x96, 0}, {0xb5, 0xb6, 0}},
+static void render_logo(void) {
+    static const char PROGMEM raw_logo[] = {
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,224,  0,128,  0,128,128,128,128,128,128,192,192,192,192,192, 64,128,128,128,  0,  0,  0,  0,  0,  0,  0,128,192,192,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,128,  0,128,  0,  0,  0,128,128,128,128,128,128,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 10, 14,134, 99,125,126,159,130,129,193,193, 65, 65, 96, 96, 96, 32, 48, 56, 15,  4,  6,  3,129,128,224,224,120, 60, 31, 15,  7,254,255,  0,  0,  4,  4,  4,  4,  6,  6,  6,  6,  6,231,250, 56,255, 24,  3,  3,  3,  3,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,193,249,255,126, 10,  6,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 96,240,120, 28, 31, 15,  6,  0,  2,  3,  3,  3,  3,  3,  3,  3, 30,254,  0,  0,  0,  0,  0,  0,  0,  0,112,254,191,255, 15,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  7,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  7,  0,  0,  0,  0,  0,  0,  0,  0,  0,  7,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+
     };
-
-    if (status) {
-        oled_write_ln_P(logo[0][0], false);
-        oled_write_ln_P(logo[0][1], false);
-    } else {
-        oled_write_ln_P(logo[1][0], false);
-        oled_write_ln_P(logo[1][1], false);
-    }
+    oled_write_raw_P(raw_logo, sizeof(raw_logo));
 }
 
-void oled_render_logo(void) {
-    static const char PROGMEM crkbd_logo[] = {
-        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
-        0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4,
-        0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
-        0};
-    oled_write_P(crkbd_logo, false);
-}
 
 void oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
         oled_render_keylog();
     } else {
-        oled_render_logo();
+        render_logo();
     }
 }
 
