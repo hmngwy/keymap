@@ -10,13 +10,13 @@
 #define HR_4 LSFT_T
 
 /* Thumb Row */
-#define LT_OUT KC_ESC
-#define LT_HOM LT(_SYM, KC_SPC)
-#define LT_INN LT(_PAD, KC_TAB)
+#define LT_OUT LT(_PAD, KC_ESC)
+#define LT_HOM LT(_SYM, KC_TAB)
+#define LT_INN KC_SPC
 
 #define RT_INN LT(_FUN, KC_ENT)
 #define RT_HOM LT(_NAV, KC_BSPC)
-#define RT_OUT KC_TILD
+#define RT_OUT KC_CIRC
 
 enum {
     TD_QUOT,
@@ -38,7 +38,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 };
 
 /* Layers */
-enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _APX, _NW, _LOC };
+enum layers { _BASE = 0, _SYM, _NAV, _FUN, _PAD, _VAL, _TEST, _LOC };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -49,36 +49,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             LT_OUT,     LT_HOM,     LT_INN,        RT_INN,   RT_HOM,     RT_OUT
   ),
 
-
   [_SYM] = LAYOUT_3x5(
     ___,     KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,           ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
     KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,          KC_EQL,  KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
-    ___,     KC_PAST, KC_PERC, KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
+    ___,     ___,     ___,     KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
                       _v_,     _v_,     _v_,              _v_,     _v_,     _v_
   ),
 
   // RT_HOM
   [_NAV] = LAYOUT_3x5(
-    KC_PERC,       KC_7,       KC_8,       KC_9,       KC_0,          KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
-    KC_LPRN,       KC_4,       KC_5,       KC_6,       KC_DOT,        KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
-    KC_RPRN,       KC_1,       KC_2,       KC_3,       KC_COMM,       KC_PAST,  KC_SLASH, KC_PPLS,  KC_PMNS, ___,
-                               DF(_NAV),   _v_,       _v_,            _v_,      _v_,      DF(0)
+    KC_PERC,       KC_7,       KC_8,       KC_9,       ___,      KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
+    KC_LPRN,       KC_4,       KC_5,       KC_6,       KC_DOT,   KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
+    KC_RPRN,       KC_1,       KC_2,       KC_3,       KC_COMM,  KC_PAST,  KC_SLASH, KC_PPLS,  KC_PMNS, ___,
+                               DF(_NAV),   KC_0,       _v_,      _v_,      _v_,      DF(0)
   ),
 
   // RT_INN
   [_FUN] = LAYOUT_3x5(
-    KC_BRIU,     KC_BRID,     KC_F11,      KC_F12,      ___,            KC_WH_U,   KC_MS_BTN1,  KC_MS_U, KC_MS_BTN2, RESET,
-    HR_1(KC_F1), HR_2(KC_F2), HR_3(KC_F3), HR_4(KC_F4), KC_F5,          KC_WH_D,   KC_MS_L,     KC_MS_D, KC_MS_R,    ___,
-    KC_F6,       KC_F7,       KC_F8,       KC_F9,       KC_F10,         KC_VOLU,   KC_VOLD, KC_MPLY, KC_MPRV,    KC_MNXT,
-                              DF(_FUN),    KC_MS_BTN1,  KC_MS_BTN2,     _v_,       _v_,         DF(0)
+    KC_BRIU, KC_BRID, KC_F11,   KC_F12,     ___,            KC_WH_U,   KC_MS_BTN1,  KC_MS_U, KC_MS_BTN2, ___,
+    KC_F1,   KC_F2,   KC_F3,    KC_F4,      KC_F5,          KC_WH_D,   KC_MS_L,     KC_MS_D, KC_MS_R,    ___,
+    KC_F6,   KC_F7,   KC_F8,    KC_F9,      KC_F10,         KC_VOLU,   KC_VOLD,     KC_MPLY, KC_MPRV,    KC_MNXT,
+                      DF(_FUN), KC_MS_BTN2, KC_MS_BTN1,     _v_,       _v_,         DF(0)
   ),
 
   // LT_INN
   [_PAD] = LAYOUT_3x5(
-    DF(_APX), DF(_NW), ___, ___, ___,    RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
-    DF(_VAL), ___,     ___, ___, ___,    RGB_SAD, RGB_HUD, RGB_VAD, ___, KC_SYSTEM_WAKE,
-    DF(_LOC), ___,     ___, ___, ___,    RGB_TOG, CK_TOGG, ___,     ___, KC_SYSTEM_SLEEP,
-                       _v_, _v_, _v_,    _v_,     _v_,     _v_
+    DF(_TEST), ___, ___, ___, RESET,    RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
+    DF(_VAL),  ___, ___, ___, ___,      RGB_SAD, RGB_HUD, RGB_VAD, ___, KC_SYSTEM_WAKE,
+    DF(_LOC),  ___, ___, ___, ___,      RGB_TOG, CK_TOGG, ___,     ___, KC_SYSTEM_SLEEP,
+                    _v_, _v_, _v_,      _v_,     _v_,     _v_
   ),
 
   [_VAL] = LAYOUT_3x5(
@@ -88,18 +87,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                    KC_4, KC_LALT, KC_SPC,    KC_ENT,  KC_SLASH,  DF(0)
   ),
 
-  [_APX] = LAYOUT_3x5(
-    KC_1,    KC_Q, KC_W, TD(APX_3), TD(APX_R),      KC_T,    KC_Y,      KC_F1,   KC_F2,   KC_ESC,
-    KC_LSFT, KC_A, KC_S, KC_D,      KC_E,           KC_G,    KC_H,      KC_F3,   KC_F4,   KC_LGUI,
-    KC_TAB,  KC_Z, KC_X, KC_C,      KC_V,           KC_B,    KC_N,      KC_F5,   KC_F6,   ___,
-                   KC_G, KC_LCTRL,  KC_SPC,         KC_ENT,  KC_SLASH,  DF(0)
-  ),
-
-  [_NW] = LAYOUT_3x5(
-    KC_TAB,  KC_Q, KC_W, KC_E,    KC_R,      KC_T,    KC_Y,      KC_1,   KC_2,   KC_ESC,
-    KC_1,    KC_A, KC_S, KC_D,    KC_F,      KC_G,    KC_H,      KC_3,   KC_4,   KC_LGUI,
-    KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,      KC_B,    KC_N,      KC_5,   KC_6,   KC_F4,
-                   KC_4, KC_LALT, KC_SPC,    KC_ENT,  KC_SLASH,  DF(0)
+  [_TEST] = LAYOUT_3x5(
+    _v_, _v_, _v_, _v_, _v_,        _v_, _v_, _v_, _v_, _v_,
+    KC_A, KC_R, KC_S, KC_T, KC_G,   KC_M, KC_N, KC_E, KC_I, KC_O,
+    _v_, _v_, _v_, _v_, _v_,        _v_, _v_, _v_, _v_, _v_,
+              _v_, _v_, _v_,        _v_, _v_, DF(0)
   ),
 
   [_LOC] = LAYOUT_3x5(
