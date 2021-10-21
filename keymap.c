@@ -50,26 +50,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_SYM] = LAYOUT_3x5(
-    ___,     KC_CIRC, KC_GRV,  KC_TILD, KC_DLR,           ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
+    ___,     KC_CIRC, KC_GRV,  KC_TILD, ___,              ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
     KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,          KC_EQL,  KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
-    ___,     ___,     ___,     KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, KC_PMNS, KC_PPLS, ___,
+    ___,     ___,     KC_DLR,  KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, ___,     ___,     ___,
                       _v_,     _v_,     _v_,              _v_,     _v_,     _v_
   ),
 
   // RT_HOM
   [_NAV] = LAYOUT_3x5(
-    KC_PERC,       KC_7,       KC_8,       KC_9,       ___,      KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
-    KC_LPRN,       KC_4,       KC_5,       KC_6,       KC_DOT,   KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
-    KC_RPRN,       KC_1,       KC_2,       KC_3,       KC_COMM,  KC_PAST,  KC_SLASH, KC_PPLS,  KC_PMNS, ___,
-                               DF(_NAV),   KC_0,       _v_,      _v_,      _v_,      DF(0)
+    KC_PERC,       KC_7,       KC_8,       KC_9,   KC_PPLS,       KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
+    KC_LPRN,       KC_4,       KC_5,       KC_6,   KC_DOT,        KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
+    KC_RPRN,       KC_1,       KC_2,       KC_3,   KC_COMM,       KC_PAST,  KC_SLASH, KC_PPLS,  KC_PMNS, ___,
+                               DF(_NAV),   KC_0,   _v_,           _v_,      _v_,      DF(0)
   ),
 
   // RT_INN
   [_FUN] = LAYOUT_3x5(
-    KC_BRIU, KC_BRID, KC_F11,   KC_F12,     ___,            KC_WH_U,   KC_MS_BTN1,  KC_MS_U, KC_MS_BTN2, ___,
-    KC_F1,   KC_F2,   KC_F3,    KC_F4,      KC_F5,          KC_WH_D,   KC_MS_L,     KC_MS_D, KC_MS_R,    ___,
-    KC_F6,   KC_F7,   KC_F8,    KC_F9,      KC_F10,         KC_VOLU,   KC_VOLD,     KC_MPLY, KC_MPRV,    KC_MNXT,
-                      DF(_FUN), KC_MS_BTN2, KC_MS_BTN1,     _v_,       _v_,         DF(0)
+    KC_BRIU, KC_F7,   KC_F8,   	KC_F9,      KC_F12,          KC_WH_U,   KC_MS_BTN1,  KC_MS_U, KC_MS_BTN2, ___,
+    KC_BRID, KC_F4,   KC_F5,    KC_F6,      KC_F11,          KC_WH_D,   KC_MS_L,     KC_MS_D, KC_MS_R,    ___,
+    ___,     KC_F1,   KC_F2,    KC_F3,      KC_F10,          KC_VOLU,   KC_VOLD,     KC_MPLY, KC_MPRV,    KC_MNXT,
+                      DF(_FUN), KC_MS_BTN2, KC_MS_BTN1,      _v_,       _v_,         DF(0)
   ),
 
   // LT_INN
@@ -88,10 +88,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_TEST] = LAYOUT_3x5(
-    _v_, _v_, _v_, _v_, _v_,        _v_, _v_, _v_, _v_, _v_,
-    KC_A, KC_R, KC_S, KC_T, KC_G,   KC_M, KC_N, KC_E, KC_I, KC_O,
-    _v_, _v_, _v_, _v_, _v_,        _v_, _v_, _v_, _v_, _v_,
-              _v_, _v_, _v_,        _v_, _v_, DF(0)
+    _v_,  _v_,  _v_,  _v_,  _v_,        _v_,  _v_,  _v_,  _v_,  _v_,
+    KC_A, KC_R, KC_S, KC_T, KC_G,       KC_M, KC_N, KC_E, KC_I, KC_O,
+    _v_,  _v_,  _v_,  _v_,  _v_,        _v_,  _v_,  _v_,  _v_,  _v_,
+                _v_,  _v_,  _v_,        _v_,  _v_,  DF(0)
   ),
 
   [_LOC] = LAYOUT_3x5(
@@ -111,7 +111,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HR_1(KC_RCBR):
         case HR_1(KC_PMNS):
         case HR_1(KC_F1):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM + 50;
         default:
             return TAPPING_TERM;
     }
