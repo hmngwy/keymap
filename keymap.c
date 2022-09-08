@@ -50,17 +50,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_SYM] = LAYOUT_3x5(
-    ___,     KC_CIRC, KC_GRV,  KC_TILD, ___,              ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
+    KC_PERC, KC_CIRC, KC_GRV,  KC_TILD, ___,              ___,     KC_LT,   KC_GT,   KC_LBRC, KC_RBRC,
     KC_AT,   KC_HASH, KC_EXLM, KC_QUES, KC_AMPR,          KC_EQL,  KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
     ___,     ___,     KC_DLR,  KC_SCLN, KC_PIPE,          KC_UNDS, KC_COLN, ___,     ___,     ___,
-                      _v_,     _v_,     _v_,              _v_,     _v_,     _v_
+                      _v_,     _v_,     _v_,              _v_,     KC_CAPS,     _v_
   ),
 
   // RT_HOM
   [_NAV] = LAYOUT_3x5(
     KC_PERC,       KC_7,       KC_8,       KC_9,   KC_PPLS,       KC_PGUP,  KC_HOME,  KC_UP,    KC_END,  KC_PSCR,
     KC_LPRN,       KC_4,       KC_5,       KC_6,   KC_DOT,        KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT, KC_INS,
-    KC_RPRN,       KC_1,       KC_2,       KC_3,   KC_COMM,       KC_PAST,  KC_SLASH, KC_PPLS,  KC_PMNS, ___,
+    KC_RPRN,       KC_1,       KC_2,       KC_3,   KC_COMM,       ___,      KC_PAST,  KC_SLASH, KC_PPLS,  KC_PMNS,
                                DF(_NAV),   KC_0,   _v_,           _v_,      _v_,      DF(0)
   ),
 
@@ -128,7 +128,7 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
 }
 
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 
 #define L_BASE 0
 #define L_SYM 2
@@ -207,13 +207,14 @@ static void render_logo(void) {
 }
 
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
         oled_render_keylog();
     } else {
         render_logo();
     }
+    return true;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
