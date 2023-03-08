@@ -5,7 +5,7 @@ qmk_user := $(shell qmk config user.name | cut -d= -f2)
 
 # Set `keyboard` to select keyboard base
 keyboard      := crkbd/rev1/common
-keymap_name   := $(shell echo ${qmk_user}-mailman)
+keymap_name   := mailmanpat
 keyboard_path := $(shell echo ${keyboard} | cut -d "/" -f1)
 
 # Set `use_docker=1` to use Docker for building

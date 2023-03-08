@@ -28,7 +28,7 @@ enum {
 };
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_QUOT]   = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_DQUO),
     [TD_SLASH]  = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_BSLS),
     [TD_V]      = ACTION_TAP_DANCE_DOUBLE(KC_V, KC_CAPS),
@@ -74,10 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // LT_INN
   [_PAD] = LAYOUT_3x5(
-    DF(_TEST), ___, ___, ___, RESET,    RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
-    DF(_VAL),  ___, ___, ___, ___,      RGB_SAD, RGB_HUD, RGB_VAD, ___, KC_SYSTEM_WAKE,
-    DF(_LOC),  ___, ___, ___, ___,      RGB_TOG, CK_TOGG, ___,     ___, KC_SYSTEM_SLEEP,
-                    _v_, _v_, _v_,      _v_,     _v_,     _v_
+    DF(_TEST), ___, ___, ___, QK_REBOOT,        RGB_SAI, RGB_HUI, RGB_VAI, ___, ___,
+    DF(_VAL),  ___, ___, ___, ___,      	RGB_SAD, RGB_HUD, RGB_VAD, ___, KC_SYSTEM_WAKE,
+    DF(_LOC),  ___, ___, ___, ___,      	RGB_TOG, CK_TOGG, ___,     ___, KC_SYSTEM_SLEEP,
+                    _v_, _v_, _v_,              _v_,     _v_,     _v_
   ),
 
   [_VAL] = LAYOUT_3x5(

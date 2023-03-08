@@ -71,3 +71,22 @@
 	      d1, d2, d3,     d4, d5, d6 \
     )
 #endif
+
+#ifdef KEYBOARD_ferris
+  #define MASTER_LEFT
+
+  #define USE_SERIAL_PD2
+
+  #define LAYOUT_3x5( \
+    a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, \
+    b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, \
+    c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, \
+    d1, d2, d3, d4, d5, d6 \
+  ) \
+    LAYOUT_split_3x5_2( \
+      a1, a2, a3, a4, a5,     a10, a9, a8, a7, a6, \
+      b1, b2, b3, b4, b5,     b10, b9, b8, b7, b6, \
+      c1, c2, c3, c4, c5,     c10, c9, c8, c7, c6, \
+	          d2, d3,         d5, d4 \
+    )
+#endif
